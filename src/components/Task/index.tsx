@@ -17,7 +17,7 @@ export function Task({
 	onTaskDeleted,
 }: TasksProps) {
 	return (
-		<View style={styles.taskContainer}>
+		<View style={styles.container}>
 			<TouchableOpacity onPress={() => onTaskDone(id)}>
 				<MaterialCommunityIcons
 					name={
@@ -28,8 +28,8 @@ export function Task({
 					size={22}
 					color={
 						isCompleted
-							? theme.colors.brand.purple
-							: theme.colors.brand.blue
+							? theme.colors.primary
+							: theme.colors.heading
 					}
 				/>
 			</TouchableOpacity>
@@ -42,11 +42,13 @@ export function Task({
 				</Text>
 			</View>
 
-			<TouchableOpacity onPress={() => onTaskDeleted(id)}>
-				<MaterialCommunityIcons
+			<TouchableOpacity 
+				onPress={() => onTaskDeleted(id)}>
+					
+				<MaterialCommunityIcons 
 					name="trash-can-outline"
 					size={20}
-					color={theme.colors.base.gray300}
+					color={theme.colors.delete}								
 				/>
 			</TouchableOpacity>
 		</View>

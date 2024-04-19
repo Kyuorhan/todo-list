@@ -2,8 +2,8 @@ import { StyleSheet } from 'react-native'
 import { theme } from "../../theme";
 
 export const styles = StyleSheet.create({
-	headerContainer: {
-		backgroundColor: theme.colors.base.gray700,
+	container: {
+		backgroundColor: theme.colors.primary,
 		alignItems: 'center',
 		justifyContent: 'center',
 		width: '100%',
@@ -22,24 +22,26 @@ export const styles = StyleSheet.create({
 	input: {
 		height: 54,
 		width: '75%',
-		backgroundColor: theme.colors.base.gray500,
+		backgroundColor: theme.colors.heading,
 		borderRadius: 5,
-		padding: 16,
-		color: theme.colors.base.gray100,
+		paddingVertical: 16,
+		paddingHorizontal: 20,
+		color: theme.colors.background,
+		shadowColor: theme.colors.background,
 		marginRight: 4,
 		fontSize: theme.fonts.size.md,
-		fontFamily: theme.fonts.family.regular,
-		borderColor: theme.colors.base.gray700,
+		fontFamily: theme.fonts.family.medium,
+		borderColor: theme.colors.heading,
 		borderWidth: 1,
 	},
 	inputBorder: {
-		borderColor: theme.colors.brand.purple,
+		borderColor: theme.colors.heading,
 	},
 	button: {
 		height: 54,
 		width: 54,
 		borderRadius: 5,
-		backgroundColor: theme.colors.brand.blue_dark,
+		backgroundColor: theme.colors.heading,
 		alignItems: 'center',
 		justifyContent: 'center',
 	},

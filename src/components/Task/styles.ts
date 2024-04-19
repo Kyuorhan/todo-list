@@ -2,26 +2,26 @@ import { StyleSheet } from 'react-native'
 import { theme } from '../../theme'
 
 export const styles = StyleSheet.create({
-	taskContainer: {
+	container: {
 		width: '100%',
 		height: 64,
-		backgroundColor: theme.colors.base.gray500,
+		backgroundColor: theme.colors.background,
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'space-between',
-		marginVertical: 4,
-		paddingHorizontal: 12,
+		marginVertical: 5,
+		paddingHorizontal: 20,
 		paddingVertical: 20,
 		borderRadius: 8,
 		borderWidth: 1,
-		borderColor: theme.colors.base.gray400,
+		borderColor: theme.colors.stroke,
 	},
 	textContainer: {
 		width: '80%',
 		height: 40,
 		alignContent: 'center',
 		justifyContent: 'center',
-		marginHorizontal: 8,
+		marginHorizontal: 10,
 	},
 	textDone: {
 		fontSize: theme.fonts.size.md,
@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
 	},
 	textCreated: {
 		fontSize: theme.fonts.size.md,
-		color: theme.colors.base.gray100,
+		color: theme.colors.heading,
 		textDecorationLine: 'none',
 	},
 })

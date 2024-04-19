@@ -13,7 +13,7 @@ type HeaderProps = {
 
 export function Header({ task, inputRef, onChangeText, onPress }: HeaderProps) {
 	return (
-		<View style={styles.headerContainer}>
+		<View style={styles.container}>
 			<Image source={logoImage} />
 			<View style={styles.form}>
 				<TextInput
@@ -24,7 +24,7 @@ export function Header({ task, inputRef, onChangeText, onPress }: HeaderProps) {
 							: null,
 					]}
 					placeholder="Adicione uma nova tarefa"
-					placeholderTextColor={theme.colors.base.gray300}
+					placeholderTextColor={theme.colors.base.gray200}
 					value={task}
 					onChangeText={onChangeText}
 					ref={inputRef}
@@ -36,7 +36,7 @@ export function Header({ task, inputRef, onChangeText, onPress }: HeaderProps) {
 					<MaterialCommunityIcons
 						name="plus-circle-outline"
 						size={22}
-						color={theme.colors.base.gray100}
+						color={theme.colors.base.gray200}
 					/>
 				</TouchableOpacity>
 			</View>
