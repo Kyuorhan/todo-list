@@ -1,46 +1,56 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 import { colors, fontFamily, fontSize } from "theme";
+import { scaleFont, scaleHeight } from "utils/scale";
+const { height } = Dimensions.get("window");
+
+// const HEIGHT_INPUT_BTN = 56;
+const HEIGHT_INPUT_BTN = scaleHeight(45);
+// const HEIGHT_INPUT_BTN = height * 0.065;
 
 export const styles = StyleSheet.create({
   container: {
+    height: "17.5%",
+    width: "100%",
     backgroundColor: colors.primary,
+  },
+  img: {
+    flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    width: "100%",
-    height: "23.5%",
+    paddingBottom: HEIGHT_INPUT_BTN / 2,
+  },
+  logo: {
+    width: scaleHeight(64),
+    height: scaleHeight(64),
   },
   form: {
-    position: "absolute",
-    bottom: -56 / 2,
-    height: 56,
     width: "100%",
     flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    gap: 8,
+    height: HEIGHT_INPUT_BTN,
+    bottom: -HEIGHT_INPUT_BTN / 2,
+    paddingHorizontal: height * 0.042,
+    position: "absolute",
+    gap: scaleHeight(7.5),
   },
   input: {
-    height: 56,
-    width: "70%",
+    flex: 1,
+    height: HEIGHT_INPUT_BTN,
     backgroundColor: colors.heading,
-    borderRadius: 5,
-    paddingVertical: 16,
-    paddingHorizontal: 25,
+    borderRadius: scaleHeight(5),
+    paddingHorizontal: scaleHeight(15),
+
     color: colors.background,
     shadowColor: colors.background,
-    // marginRight: 4,
     fontSize: fontSize.md,
     fontFamily: fontFamily.inter.medium,
-    borderColor: colors.heading,
-    borderWidth: 1,
   },
   inputBorder: {
     borderColor: colors.heading,
   },
   button: {
-    height: 56,
-    width: 56,
-    borderRadius: 5,
+    height: HEIGHT_INPUT_BTN,
+    width: HEIGHT_INPUT_BTN,
+    borderRadius: scaleHeight(5),
     backgroundColor: colors.heading,
     alignItems: "center",
     justifyContent: "center",

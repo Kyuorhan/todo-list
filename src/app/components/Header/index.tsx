@@ -1,9 +1,9 @@
-import { View, Image, TextInput, TouchableOpacity, Text } from "react-native";
+import { View, TextInput, TouchableOpacity, Text } from "react-native";
 import { styles } from "./styles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { colors } from "theme";
-import logoImage from "../../../assets/logo.png";
 import { scaleHeight } from "utils/scale";
+import Logo from "../../../assets/logo.svg";
 
 type HeaderProps = {
   task: string;
@@ -15,7 +15,13 @@ type HeaderProps = {
 export function Header({ task, inputRef, onChangeText, onPress }: HeaderProps) {
   return (
     <View style={styles.container}>
-      <Image source={logoImage} />
+      <View style={styles.img}>
+        <Logo
+          width={scaleHeight(styles.logo.width)}
+          height={scaleHeight(styles.logo.height)}
+        />
+      </View>
+
       <View style={styles.form}>
         <TextInput
           style={[
