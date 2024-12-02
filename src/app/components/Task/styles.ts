@@ -1,36 +1,39 @@
 import { StyleSheet } from "react-native";
-import { colors, fontSize } from "theme";
+import { colors, fontFamily, fontSize } from "theme";
+import { scaleHeight } from "utils/scale";
 
 export const styles = StyleSheet.create({
   container: {
     width: "100%",
-    height: 64,
+    height: scaleHeight(45),
     backgroundColor: colors.background,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    // marginVertical: 5,
-    paddingHorizontal: 20,
-    paddingVertical: 20,
-    borderRadius: 8,
-    borderWidth: 1,
+    paddingHorizontal: scaleHeight(15),
+    borderRadius: scaleHeight(5),
+    borderWidth: scaleHeight(1),
     borderColor: colors.stroke,
   },
   textContainer: {
-    width: "80%",
-    height: 40,
+    flex: 1,
     alignContent: "center",
     justifyContent: "center",
-    marginHorizontal: 10,
+    marginHorizontal: scaleHeight(8.5),
   },
   textDone: {
+    fontFamily: fontFamily.inter.medium,
     fontSize: fontSize.md,
     color: colors.base.gray300,
     textDecorationLine: "line-through",
   },
   textCreated: {
+    fontFamily: fontFamily.inter.medium,
     fontSize: fontSize.md,
     color: colors.heading,
     textDecorationLine: "none",
+  },
+  icon: {
+    height: scaleHeight(15),
   },
 });

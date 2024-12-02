@@ -1,4 +1,7 @@
+import { Dimensions } from "react-native";
 import { scaleFont } from "utils/scale";
+
+const { height } = Dimensions.get("window");
 
 export const fontFamily = {
   inter: {
@@ -49,34 +52,28 @@ interface FontSize {
  * @type {FontSize}
  */
 export const fontSize: FontSize = {
-  xs: scaleFont(12),
-  sm: scaleFont(14),
-  md: scaleFont(16),
-  lg: scaleFont(18),
-  xl: scaleFont(20),
-  xl2: scaleFont(22),
-  xl2_1: scaleFont(24),
-  xl3: scaleFont(26),
-  xl3_1: scaleFont(28),
-  xl4: scaleFont(30),
-  xl4_1: scaleFont(32),
-  xl5: scaleFont(36),
+  xs: scaleFont(height * 0.012),
+  sm: scaleFont(height * 0.014),
+  md: scaleFont(height * 0.016),
+  lg: scaleFont(height * 0.018),
+  xl: scaleFont(height * 0.02),
+  xl2: scaleFont(height * 0.022),
+  xl2_1: scaleFont(height * 0.024),
+  xl3: scaleFont(height * 0.026),
+  xl3_1: scaleFont(height * 0.028),
+  xl4: scaleFont(height * 0.03),
+  xl4_1: scaleFont(height * 0.032),
+  xl5: scaleFont(height * 0.036),
+  // xs: scaleFont(12),
+  // sm: scaleFont(14),
+  // md: scaleFont(16),
+  // lg: scaleFont(18),
+  // xl: scaleFont(20),
+  // xl2: scaleFont(22),
+  // xl2_1: scaleFont(24),
+  // xl3: scaleFont(26),
+  // xl3_1: scaleFont(28),
+  // xl4: scaleFont(30),
+  // xl4_1: scaleFont(32),
+  // xl5: scaleFont(36),
 };
-
-// export const fonts = {
-//   family: {
-//     regular: "Inter_400Regular",
-//     medium: "Inter_500Medium",
-//     semibold: "Inter_600SemiBold",
-//     bold: "Inter_700Bold",
-//     // regular: "Poppins_400Regular",
-//     // medium: "Poppins_500Medium",
-//     // semibold: "Poppins_600SemiBold",
-//     // bold: "Poppins_700Bold",
-//   },
-//   size: {
-// 		sm: 12,
-// 		md: 14,
-// 		lg: 16,
-//   },
-// }

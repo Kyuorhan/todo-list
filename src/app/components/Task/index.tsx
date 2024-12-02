@@ -25,7 +25,7 @@ export function Task({
               ? "checkbox-marked-circle-outline"
               : "checkbox-blank-circle-outline"
           }
-          size={22}
+          size={styles.icon.height}
           color={isCompleted ? colors.primary : colors.heading}
         />
       </TouchableOpacity>
@@ -39,7 +39,7 @@ export function Task({
       <TouchableOpacity onPress={() => onTaskDeleted(id)}>
         <MaterialCommunityIcons
           name="trash-can-outline"
-          size={20}
+          size={styles.icon.height}
           color={colors.delete}
         />
       </TouchableOpacity>
