@@ -6,6 +6,9 @@ import { UUID } from "../../../utils/uuid";
 import { Header } from "../../components/Header";
 import { Task } from "../../components/Task";
 import { Empty } from "../../components/Empty";
+import { BaseContainer } from "app/components/BaseContainer";
+import { colors } from "theme";
+import { scaleHeight } from "utils/scale";
 
 export default function Home() {
   const [tasks, setTasks] = useState<TaskDTO[]>([]);
@@ -55,7 +58,7 @@ export default function Home() {
   ).length;
 
   return (
-    <View style={styles.container}>
+    <BaseContainer backgroundColor={colors.primary} barStyle={"light-content"}>
       <Header
         inputRef={newTaskInputRef}
         task={newTask}
@@ -65,7 +68,7 @@ export default function Home() {
       <View style={styles.tasksContainer}>
         <View style={styles.info}>
           <View style={styles.row}>
-            <Text style={styles.tasksCreated}>Criadas</Text>
+            <Text style={styles.tasksCreated}>Total</Text>
             <View style={styles.counterContainer}>
               <Text style={styles.counterText}>{totalTasksCreated}</Text>
             </View>
@@ -77,9 +80,13 @@ export default function Home() {
             </View>
           </View>
         </View>
-
         <FlatList
           data={tasks}
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingVertical: scaleHeight(10),
+            // backgroundColor: "red",
+          }}
           keyExtractor={(tasks) => tasks.id}
           renderItem={({ item }) => (
             <Task
@@ -93,6 +100,6 @@ export default function Home() {
           ListEmptyComponent={<Empty />}
         />
       </View>
-    </View>
+    </BaseContainer>
   );
 }

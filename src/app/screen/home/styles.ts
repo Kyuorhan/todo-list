@@ -1,21 +1,22 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 import { colors, fontFamily, fontSize } from "theme";
+import { scaleHeight } from "utils/scale";
+
+const { height } = Dimensions.get("window");
+
+const MARGIN_HORIZONTAL = height * 0.005;
 
 export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-  },
   tasksContainer: {
     flex: 1,
-    marginTop: 55,
-    marginHorizontal: 30,
+    paddingTop: scaleHeight(45),
+    paddingBottom: scaleHeight(25),
+    paddingHorizontal: height * 0.042,
   },
   tasksCreated: {
     color: colors.heading,
     fontSize: fontSize.md,
     fontFamily: fontFamily.inter.semibold,
-    marginLeft: 5,
   },
   tasksDone: {
     color: colors.primary,
@@ -24,10 +25,8 @@ export const styles = StyleSheet.create({
   },
   info: {
     flexDirection: "row",
-    alignItems: "center",
     justifyContent: "space-between",
-    marginBottom: 30,
-    marginRight: 5,
+    marginBottom: scaleHeight(25),
   },
   row: {
     flexDirection: "row",
@@ -35,12 +34,12 @@ export const styles = StyleSheet.create({
   },
   counterContainer: {
     backgroundColor: colors.stroke,
-    width: 30,
-    height: 20,
-    borderRadius: 999,
+    paddingHorizontal: scaleHeight(10),
+    paddingVertical: scaleHeight(1.5),
+    borderRadius: 99,
     alignItems: "center",
     justifyContent: "center",
-    marginLeft: 8,
+    marginLeft: scaleHeight(7.5),
   },
   counterText: {
     color: colors.heading,
