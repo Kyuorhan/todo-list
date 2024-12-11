@@ -12,16 +12,31 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "userInterfaceStyle": "light",
+      "backgroundColor": "#ffffff"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "userInterfaceStyle": "light",
+      "backgroundColor": "#ffffff"
+    },
+    "theme": {
+      "light": {
+        "background": "#ffffff",
+        "text": "#000000"
+      },
+      "dark": {
+        "background": "#000000",
+        "text": "#ffffff"
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "newArchEnabled": true
   }
 }

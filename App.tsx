@@ -17,6 +17,8 @@ import {
 } from "@expo-google-fonts/inter";
 
 import Home from "./src/app/screen/home";
+import { StyleSheet, useColorScheme, View } from "react-native";
+import { colors } from "theme";
 
 export default function App() {
   const [fontsLoaded] =
@@ -35,9 +37,20 @@ export default function App() {
       Inter_400Regular,
     });
 
-  if (!fontsLoaded) {
+  if (!fontsLoaded || !colors) {
     return <Loading />;
   }
 
-  return <Home />;
+  return (
+    <View style={styles.container}>
+      <Home />
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
+});
