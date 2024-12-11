@@ -1,5 +1,12 @@
 import { useRef, useState } from "react";
-import { FlatList, Text, View, Alert, TextInput } from "react-native";
+import {
+  FlatList,
+  Text,
+  View,
+  Alert,
+  TextInput,
+  SafeAreaView,
+} from "react-native";
 import { styles } from "./styles";
 import { TaskDTO } from "../../../dtos/TaskDTO";
 import { UUID } from "../../../utils/uuid";
