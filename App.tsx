@@ -1,53 +1,56 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { Loading } from './src/components/Loading';
-
+import { Loading } from "./src/app/components/Loading";
 import {
   useFonts as userFontPoppins,
+  Poppins_900Black,
   Poppins_700Bold,
   Poppins_600SemiBold,
   Poppins_500Medium,
-  Poppins_400Regular
-} from '@expo-google-fonts/poppins'
+  Poppins_400Regular,
+} from "@expo-google-fonts/poppins";
 import {
   useFonts as userFontsInter,
+  Inter_900Black,
   Inter_700Bold,
   Inter_600SemiBold,
   Inter_500Medium,
-  Inter_400Regular
-} from '@expo-google-fonts/inter'
+  Inter_400Regular,
+} from "@expo-google-fonts/inter";
 
-import { theme } from './src/theme';
-import { HomeScreen } from './src/screnns/home';
+import Home from "./src/app/screen/home";
+import { StyleSheet, useColorScheme, View } from "react-native";
+import { colors } from "theme";
 
 export default function App() {
-  const [poppinsLoaded] = userFontPoppins({
-    Poppins_700Bold,
-    Poppins_600SemiBold,
-    Poppins_500Medium,
-    Poppins_400Regular,
-  });  
-  const [interLoaded] = userFontsInter({
-    Inter_700Bold,
-    Inter_600SemiBold,
-    Inter_500Medium,
-    Inter_400Regular,
-  });
+  const [fontsLoaded] =
+    userFontPoppins({
+      Poppins_900Black,
+      Poppins_700Bold,
+      Poppins_600SemiBold,
+      Poppins_500Medium,
+      Poppins_400Regular,
+    }) &&
+    userFontsInter({
+      Inter_900Black,
+      Inter_700Bold,
+      Inter_600SemiBold,
+      Inter_500Medium,
+      Inter_400Regular,
+    });
 
-  if (!poppinsLoaded || !interLoaded) {
-    return <Loading />
-}
+  if (!fontsLoaded || !colors) {
+    return <Loading />;
+  }
 
-  return (poppinsLoaded && interLoaded) ? (
-    <HomeScreen /> 
-  ) : null
+  return (
+    <View style={styles.container}>
+      <Home />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: theme.colors.base.gray600,
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: colors.background,
   },
 });

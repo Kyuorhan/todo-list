@@ -1,6 +1,13 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
-    "strict": true
+    "strict": true, // Habilita todas as verificações de tipo estritas.
+    "noImplicitAny": true, // Gera erro quando o tipo "any" é implicitamente inferido.
+    "allowUmdGlobalAccess": true, // Permite o acesso global a módulos UMD (Universal Module Definition) no TypeScript.
+    "baseUrl": "./src/",
+    "jsx": "react-jsx"
+    // "paths": {
+    //   "@/*": ["./src/*"]
+    // }
   }
 }
