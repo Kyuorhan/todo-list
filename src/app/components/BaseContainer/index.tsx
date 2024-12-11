@@ -1,16 +1,16 @@
 // Path: packages/molecules/BaseContainer/index.tsx
 import {
-  ColorValue,
   Platform,
   StatusBar,
   StatusBarProps,
-  StatusBarStyle,
   StyleSheet,
   View,
   ViewProps,
 } from "react-native";
+import Constants from "expo-constants";
 
-const statusBarHeight = Platform.OS === "ios" ? 0 : StatusBar.currentHeight;
+const statusBarHeight =
+  Platform.OS === "ios" ? Constants.statusBarHeight : StatusBar.currentHeight;
 
 export function BaseContainer({
   children,
