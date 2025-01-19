@@ -20,8 +20,8 @@ export const styles = StyleSheet.create({
     paddingBottom: HEIGHT_INPUT_BTN / 2,
   },
   logo: {
-    width: scaleHeight(64),
-    height: scaleHeight(64),
+    width: scaleHeight(76),
+    height: scaleHeight(76),
   },
   form: {
     width: "100%",

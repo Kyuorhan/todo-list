@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "todo-list",
+    "name": "Todo",
     "slug": "todo-list",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,30 +9,20 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FF941A"
     },
     "ios": {
       "supportsTablet": true,
       "userInterfaceStyle": "light",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FF941A"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#FF941A"
       },
       "userInterfaceStyle": "light",
-      "backgroundColor": "#ffffff"
-    },
-    "theme": {
-      "light": {
-        "background": "#ffffff",
-        "text": "#000000"
-      },
-      "dark": {
-        "background": "#000000",
-        "text": "#ffffff"
-      }
+      "backgroundColor": "#FF941A"
     },
     "web": {
       "favicon": "./assets/favicon.png"
