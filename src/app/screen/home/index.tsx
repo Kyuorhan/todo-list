@@ -7,7 +7,7 @@ import {
   TextInput,
   SafeAreaView,
 } from "react-native";
-import { styles } from "./styles";
+import styles from "./styles";
 import { TaskDTO } from "../../../dtos/TaskDTO";
 import { UUID } from "../../../utils/uuid";
 import { Header } from "../../components/Header";

@@ -22,7 +22,8 @@
         "backgroundColor": "#FF941A"
       },
       "userInterfaceStyle": "light",
-      "backgroundColor": "#FF941A"
+      "backgroundColor": "#FF941A",
+      "package": "com.kyuorhan.todolist"
     },
     "web": {
       "favicon": "./assets/favicon.png"

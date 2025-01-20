@@ -6,7 +6,7 @@ const { height } = Dimensions.get("window");
 
 const MARGIN_HORIZONTAL = height * 0.005;
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   tasksContainer: {
     flex: 1,
     paddingTop: scaleHeight(45),
@@ -50,3 +50,5 @@ export const styles = StyleSheet.create({
     marginVertical: 8.5,
   },
 });
+
+export default styles;

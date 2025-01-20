@@ -1,4 +1,6 @@
-import { Loading } from "./src/app/components/Loading";
+import { useState } from "react";
+import { StyleSheet, View } from "react-native";
+import { colors } from "theme";
 import {
   useFonts as userFontPoppins,
   Poppins_900Black,
@@ -15,10 +17,9 @@ import {
   Inter_500Medium,
   Inter_400Regular,
 } from "@expo-google-fonts/inter";
-
-import Home from "./src/app/screen/home";
-import { StyleSheet, useColorScheme, View } from "react-native";
-import { colors } from "theme";
+import Home from "./src/app/screen/Home";
+import SplashScreenComponent from "app/screen/Splash";
+import { Loading } from "./src/app/components/Loading";
 
 export default function App() {
   const [fontsLoaded] =
@@ -36,14 +37,24 @@ export default function App() {
       Inter_500Medium,
       Inter_400Regular,
     });
+  const [isSplashVisible, setSplashVisible] = useState(true);
 
   if (!fontsLoaded || !colors) {
     return <Loading />;
   }
 
+  // Função chamada quando a animação do Splash termina
+  const handleSplashFinish = () => {
+    setSplashVisible(false); // Atualiza o estado para esconder o Splash
+  };
+
   return (
     <View style={styles.container}>
-      <Home />
+      {isSplashVisible ? (
+        <SplashScreenComponent onFinish={handleSplashFinish} />
+      ) : (
+        <Home />
+      )}
     </View>
   );
 }
