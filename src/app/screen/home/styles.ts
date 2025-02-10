@@ -4,14 +4,19 @@ import { scaleHeight } from "utils/scale";
 
 const { height } = Dimensions.get("window");
 
-const MARGIN_HORIZONTAL = height * 0.005;
+const PADDING = scaleHeight(30);
 
 const styles = StyleSheet.create({
+  listContent: {
+    flexGrow: 1,
+    paddingVertical: PADDING,
+    paddingHorizontal: PADDING,
+  },
   tasksContainer: {
     flex: 1,
-    paddingTop: scaleHeight(45),
-    paddingBottom: scaleHeight(25),
-    paddingHorizontal: height * 0.042,
+    paddingTop: PADDING * 0.45,
+    paddingBottom: PADDING * 0.75,
+    paddingHorizontal: PADDING * 0.1,
   },
   tasksCreated: {
     color: colors.heading,
@@ -26,7 +31,6 @@ const styles = StyleSheet.create({
   info: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: scaleHeight(25),
   },
   row: {
     flexDirection: "row",

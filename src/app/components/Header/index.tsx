@@ -1,8 +1,7 @@
 import { View, TextInput, TouchableOpacity, Text } from "react-native";
-import { styles } from "./styles";
+import { ICON_SIZE, styles } from "./styles";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { colors } from "theme";
-import { scaleHeight } from "utils/scale";
 import Logo from "../../../assets/logo.svg";
 
 type HeaderProps = {
@@ -16,12 +15,8 @@ export function Header({ task, inputRef, onChangeText, onPress }: HeaderProps) {
   return (
     <View style={styles.container}>
       <View style={styles.img}>
-        <Logo
-          width={scaleHeight(styles.logo.width)}
-          height={scaleHeight(styles.logo.height)}
-        />
+        <Logo width={styles.logo.width} height={styles.logo.height} />
       </View>
-
       <View style={styles.form}>
         <TextInput
           style={[
@@ -33,14 +28,13 @@ export function Header({ task, inputRef, onChangeText, onPress }: HeaderProps) {
           value={task}
           onChangeText={onChangeText}
           ref={inputRef}
-          autoCorrect={false}
           onSubmitEditing={onPress}
           returnKeyType="done"
         />
         <TouchableOpacity style={styles.button} onPress={onPress}>
           <MaterialCommunityIcons
             name="plus"
-            size={scaleHeight(20)}
+            size={ICON_SIZE}
             color={colors.base.gray200}
           />
         </TouchableOpacity>

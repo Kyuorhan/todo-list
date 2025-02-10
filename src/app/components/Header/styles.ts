@@ -3,15 +3,18 @@ import { colors, fontFamily, fontSize } from "theme";
 import { scaleFont, scaleHeight } from "utils/scale";
 const { height } = Dimensions.get("window");
 
+const PADDING_HORIZONTAL = scaleHeight(30);
 // const HEIGHT_INPUT_BTN = 56;
-const HEIGHT_INPUT_BTN = scaleHeight(45);
+const HEIGHT_INPUT_BTN = scaleHeight(42);
+export const ICON_SIZE = scaleFont(20);
 // const HEIGHT_INPUT_BTN = height * 0.065;
 
 export const styles = StyleSheet.create({
   container: {
-    height: "17.5%",
+    height: height * 0.15,
     width: "100%",
     backgroundColor: colors.primary,
+    zIndex: 999,
   },
   img: {
     flex: 1,
@@ -20,15 +23,15 @@ export const styles = StyleSheet.create({
     paddingBottom: HEIGHT_INPUT_BTN / 2,
   },
   logo: {
-    width: scaleHeight(76),
-    height: scaleHeight(76),
+    width: HEIGHT_INPUT_BTN * 2.15,
+    height: HEIGHT_INPUT_BTN * 2.15,
   },
   form: {
     width: "100%",
     flexDirection: "row",
     height: HEIGHT_INPUT_BTN,
     bottom: -HEIGHT_INPUT_BTN / 2,
-    paddingHorizontal: height * 0.042,
+    paddingHorizontal: PADDING_HORIZONTAL,
     position: "absolute",
     gap: scaleHeight(7.5),
   },

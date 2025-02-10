@@ -32,6 +32,10 @@ export default function Home() {
       setNewTask("");
 
       newTaskInputRef.current?.blur();
+    } else {
+      Alert.alert("Atenção", "A tarefa deve conter no mínimo 5 caracteres.", [
+        { text: "OK" },
+      ]);
     }
   }
 
@@ -72,41 +76,47 @@ export default function Home() {
         onChangeText={setNewTask}
         onPress={handleTaskAdd}
       />
-      <View style={styles.tasksContainer}>
-        <View style={styles.info}>
-          <View style={styles.row}>
-            <Text style={styles.tasksCreated}>Total</Text>
-            <View style={styles.counterContainer}>
-              <Text style={styles.counterText}>{totalTasksCreated}</Text>
+      <FlatList
+        data={tasks}
+        contentContainerStyle={styles.listContent}
+        keyExtractor={(tasks) => tasks.id}
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
+        ListHeaderComponent={
+          <>
+            <View style={styles.tasksContainer}>
+              <View style={styles.info}>
+                <View style={styles.row}>
+                  <Text style={styles.tasksCreated}>Total</Text>
+                  <View style={styles.counterContainer}>
+                    <Text style={styles.counterText}>{totalTasksCreated}</Text>
+                  </View>
+                </View>
+                <View style={styles.row}>
+                  <Text style={styles.tasksDone}>Concluídas</Text>
+                  <View style={styles.counterContainer}>
+                    <Text style={styles.counterText}>
+                      {totalTasksCompleted}
+                    </Text>
+                  </View>
+                </View>
+              </View>
             </View>
-          </View>
-          <View style={styles.row}>
-            <Text style={styles.tasksDone}>Concluídas</Text>
-            <View style={styles.counterContainer}>
-              <Text style={styles.counterText}>{totalTasksCompleted}</Text>
-            </View>
-          </View>
-        </View>
-        <FlatList
-          data={tasks}
-          contentContainerStyle={{
-            flexGrow: 1,
-            paddingVertical: scaleHeight(10),
-            // backgroundColor: "red",
-          }}
-          keyExtractor={(tasks) => tasks.id}
-          renderItem={({ item }) => (
-            <Task
-              key={item.id}
-              onTaskDone={() => handleTaskDone(item.id)}
-              onTaskDeleted={() => handleTaskDeleted(item.id)}
-              {...item}
-            />
-          )}
-          ItemSeparatorComponent={() => <View style={styles.separator} />}
-          ListEmptyComponent={<Empty />}
-        />
-      </View>
+          </>
+        }
+        renderItem={({ item }) => (
+          <Task
+            key={item.id}
+            onTaskDone={() => handleTaskDone(item.id)}
+            onTaskDeleted={() => handleTaskDeleted(item.id)}
+            {...item}
+          />
+        )}
+        windowSize={5} // Limita a renderização para economizar memória
+        initialNumToRender={10} // Renderiza inicialmente 10 itens
+        maxToRenderPerBatch={10} // Lida com no máximo 10 itens por lote
+        removeClippedSubviews={true} // Melhora o desempenho em listas grandes
+        ListEmptyComponent={<Empty />}
+      />
     </BaseContainer>
   );
 }
