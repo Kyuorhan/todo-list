@@ -14,7 +14,22 @@
     "ios": {
       "supportsTablet": true,
       "userInterfaceStyle": "light",
-      "backgroundColor": "#FF941A"
+      "backgroundColor": "#FF941A",
+      "bundleIdentifier": "com.kyuorhan.todolist",
+      "infoPlist": {
+        "NSCameraUsageDescription": "Este aplicativo usa a câmera para tirar fotos.",
+        "NSLocationWhenInUseUsageDescription": "Este aplicativo usa serviços de localização para encontrar sua localização.",
+        "NSLocationAlwaysUsageDescription": "Este aplicativo usa serviços de localização em segundo plano.",
+        "NSMicrophoneUsageDescription": "Este aplicativo usa o microfone para gravar áudio.",
+        "NSPhotoLibraryUsageDescription": "Este aplicativo usa a biblioteca de fotos para armazenar fotos.",
+        "NSUserNotificationUsageDescription": "Este aplicativo gostaria de enviar notificações para mantê-lo informado sobre atualizações importantes.",
+        "NSBluetoothAlwaysUsageDescription": "Este aplicativo usa o bluetooth para se conectar a outros dispositivos.",
+        "NSBluetoothPeripheralUsageDescription": "Este aplicativo usa o bluetooth para se conectar a outros dispositivos.",
+        "NSMotionUsageDescription": "Este aplicativo usa o movimento para detectar movimentos.",
+        "NSCalendarsUsageDescription": "Este aplicativo usa o calendário para armazenar seus eventos.",
+        "NSRemindersUsageDescription": "Este aplicativo usa os lembretes para armazenar suas tarefas.",
+        "NSContactsUsageDescription": "Este aplicativo usa os contatos para armazenar seus contatos."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -23,7 +38,21 @@
       },
       "userInterfaceStyle": "light",
       "backgroundColor": "#FF941A",
-      "package": "com.kyuorhan.todolist"
+      "package": "com.kyuorhan.todolist",
+      "permissions": [
+        "android.permission.ACCESS_BACKGROUND_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.CAMERA",
+        "android.permission.INTERNET",
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.VIBRATE",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.MODIFY_AUDIO_SETTINGS"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"

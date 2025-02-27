@@ -17,7 +17,7 @@ import {
   Inter_500Medium,
   Inter_400Regular,
 } from "@expo-google-fonts/inter";
-import Home from "./src/app/screen/Home";
+import Home from "app/screen/home";
 import SplashScreenComponent from "app/screen/Splash";
 import { Loading } from "./src/app/components/Loading";
 
@@ -44,7 +44,7 @@ export default function App() {
   }
 
   // Função chamada quando a animação do Splash termina
-  const handleSplashFinish = () => {
+  const handleSplashFinish = async () => {
     setSplashVisible(false); // Atualiza o estado para esconder o Splash
   };
 

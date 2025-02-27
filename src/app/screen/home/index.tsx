@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   FlatList,
   Text,
@@ -7,6 +7,7 @@ import {
   TextInput,
   SafeAreaView,
 } from "react-native";
+import * as Notifications from "expo-notifications";
 import styles from "./styles";
 import { TaskDTO } from "../../../dtos/TaskDTO";
 import { UUID } from "../../../utils/uuid";
@@ -15,19 +16,69 @@ import { Task } from "../../components/Task";
 import { Empty } from "../../components/Empty";
 import { BaseContainer } from "app/components/BaseContainer";
 import { colors } from "theme";
-import { scaleHeight } from "utils/scale";
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: true,
+    shouldSetBadge: true,
+  }),
+});
 
 export default function Home() {
   const [tasks, setTasks] = useState<TaskDTO[]>([]);
   const [newTask, setNewTask] = useState("");
+  const [finishTasks, setFinishTasks] = useState(false);
   const newTaskInputRef = useRef<TextInput>(null);
 
+  useEffect(() => {
+    const requestNotificationPermissions = async () => {
+      const { status } = await Notifications.getPermissionsAsync();
+      if (status !== "granted") {
+        await Notifications.requestPermissionsAsync();
+      }
+    };
+
+    requestNotificationPermissions();
+
+    if (finishTasks) {
+      handleCallNotifications();
+    }
+  }, [finishTasks]);
+
+  const handleCallNotifications = async () => {
+    const trigger: Notifications.TimeIntervalTriggerInput = {
+      seconds: 10,
+      repeats: true,
+      type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
+    };
+
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: "Tarefas finalizadas",
+        body: "Parabéns, você finalizou todas as tarefas",
+        sound: true,
+        priority: Notifications.AndroidNotificationPriority.HIGH,
+      },
+      trigger: trigger,
+    });
+  };
+
+  // Adicionar tarefa
   function handleTaskAdd() {
     if (newTask !== "" && newTask.length >= 5) {
-      setTasks((tasks) => [
-        ...tasks,
-        { id: UUID(), isCompleted: false, title: newTask.trim() },
-      ]);
+      // setTasks((tasks) => [
+      //   ...tasks,
+      //   { id: UUID(), isCompleted: false, title: newTask.trim() },
+      // ]);
+      setTasks((tasks) => {
+        const updatedTasks = [
+          ...tasks,
+          { id: UUID(), isCompleted: false, title: newTask.trim() },
+        ];
+        setFinishTasks(updatedTasks.every((task) => task.isCompleted));
+        return updatedTasks;
+      });
 
       setNewTask("");
 
@@ -39,15 +90,17 @@ export default function Home() {
     }
   }
 
+  // Fechar a tarefa
   function handleTaskDone(id: string) {
-    setTasks((task) =>
-      task.map((task) => {
-        task.id === id ? (task.isCompleted = !task.isCompleted) : null;
-        return task;
-      })
-    );
+    // setTasks((task) =>
+    //   task.map((task) => {
+    //     task.id === id ? (task.isCompleted = !task.isCompleted) : null;
+    //     return task;
+    //   })
+    // );
   }
 
+  // Deletar tarefa
   function handleTaskDeleted(id: string) {
     Alert.alert("Excluir tarefa", "Desejar excluir essa tarefa?", [
       {
@@ -55,6 +108,29 @@ export default function Home() {
         style: "default",
         onPress: () =>
           setTasks((tasks) => tasks.filter((task) => task.id !== id)),
+      },
+      {
+        text: "Não",
+        style: "cancel",
+      },
+    ]);
+  }
+
+  // Finalizar todas as tarefas
+  function handleTaskFinish() {
+    Alert.alert("Finalizar tarefas", "Deseja finalizar todas as tarefas?", [
+      {
+        text: "Sim",
+        style: "default",
+        onPress: () =>
+          setTasks((tasks) => {
+            const updatedTasks = tasks.map((task) => {
+              task.isCompleted = true;
+              return task;
+            });
+            setFinishTasks(true);
+            return updatedTasks;
+          }),
       },
       {
         text: "Não",
@@ -102,6 +178,18 @@ export default function Home() {
               </View>
             </View>
           </>
+        }
+        ListFooterComponent={
+          <View style={styles.taskFooter}>
+            <Text style={styles.footerText}>
+              {totalTasksCompleted === totalTasksCreated
+                ? "Parabéns, você finalizou todas as tarefas!"
+                : "Você ainda tem tarefas pendentes"}
+            </Text>
+            <Text style={styles.footerText}>
+              {totalTasksCompleted === totalTasksCreated ? "🎉" : "👊"}
+            </Text>
+          </View>
         }
         renderItem={({ item }) => (
           <Task

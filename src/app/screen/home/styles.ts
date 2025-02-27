@@ -53,6 +53,20 @@ const styles = StyleSheet.create({
   separator: {
     marginVertical: 8.5,
   },
+  taskFooter: {
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: PADDING * 0.25,
+    gap: PADDING * 0.15,
+  },
+  footerText: {
+    color: colors.heading,
+    fontSize: fontSize.sm,
+    fontFamily: fontFamily.inter.regular,
+    textAlign: "center",
+  },
 });
 
 export default styles;

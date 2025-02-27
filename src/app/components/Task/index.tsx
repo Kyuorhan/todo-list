@@ -17,8 +17,8 @@ export function Task({
   onTaskDeleted,
 }: TasksProps) {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity onPress={() => onTaskDone(id)}>
+    <TouchableOpacity onPress={() => onTaskDone(id)} style={styles.container}>
+      <View>
         <MaterialCommunityIcons
           name={
             isCompleted
@@ -28,7 +28,7 @@ export function Task({
           size={styles.icon.height}
           color={isCompleted ? colors.primary : colors.heading}
         />
-      </TouchableOpacity>
+      </View>
 
       <View style={styles.textContainer}>
         <Text style={isCompleted ? styles.textDone : styles.textCreated}>
@@ -36,13 +36,13 @@ export function Task({
         </Text>
       </View>
 
-      <TouchableOpacity onPress={() => onTaskDeleted(id)}>
+      <TouchableOpacity onPress={() => onTaskDeleted(id)} style={styles.delete}>
         <MaterialCommunityIcons
           name="trash-can-outline"
           size={styles.icon.height}
           color={colors.delete}
         />
       </TouchableOpacity>
-    </View>
+    </TouchableOpacity>
   );
 }

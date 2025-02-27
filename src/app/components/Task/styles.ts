@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: scaleHeight(15),
+    paddingLeft: scaleHeight(15),
     borderRadius: scaleHeight(5),
     borderWidth: scaleHeight(1),
     borderColor: colors.stroke,
@@ -35,5 +35,8 @@ export const styles = StyleSheet.create({
   },
   icon: {
     height: scaleHeight(15),
+  },
+  delete: {
+    padding: scaleHeight(15),
   },
 });
