@@ -17,7 +17,7 @@ import {
   Inter_500Medium,
   Inter_400Regular,
 } from "@expo-google-fonts/inter";
-import Home from "app/screen/home";
+import Home from "app/screen/Home";
 import SplashScreenComponent from "app/screen/Splash";
 import { Loading } from "./src/app/components/Loading";
 

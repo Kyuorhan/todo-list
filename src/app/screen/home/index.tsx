@@ -76,12 +76,13 @@ export default function Home() {
           ...tasks,
           { id: UUID(), isCompleted: false, title: newTask.trim() },
         ];
-        setFinishTasks(updatedTasks.every((task) => task.isCompleted));
+        if (updatedTasks.length >= 2) {
+          setFinishTasks(updatedTasks.every((task) => task.isCompleted));
+        }
         return updatedTasks;
       });
 
       setNewTask("");
-
       newTaskInputRef.current?.blur();
     } else {
       Alert.alert("Atenção", "A tarefa deve conter no mínimo 5 caracteres.", [
@@ -98,6 +99,18 @@ export default function Home() {
     //     return task;
     //   })
     // );
+    setTasks((tasks) => {
+      const updatedTasks = tasks.map((task) => {
+        if (task.id === id) {
+          task.isCompleted = !task.isCompleted;
+        }
+        return task;
+      });
+      if (updatedTasks.length >= 2) {
+        setFinishTasks(updatedTasks.every((task) => task.isCompleted));
+      }
+      return updatedTasks;
+    });
   }
 
   // Deletar tarefa
@@ -106,8 +119,18 @@ export default function Home() {
       {
         text: "Sim",
         style: "default",
+        // onPress: () =>
+        //   setTasks((tasks) => tasks.filter((task) => task.id !== id)),
         onPress: () =>
-          setTasks((tasks) => tasks.filter((task) => task.id !== id)),
+          setTasks((tasks) => {
+            const updatedTasks = tasks.filter((task) => task.id !== id);
+            if (updatedTasks.length >= 2) {
+              setFinishTasks(updatedTasks.every((task) => task.isCompleted));
+            } else {
+              setFinishTasks(false);
+            }
+            return updatedTasks;
+          }),
       },
       {
         text: "Não",
@@ -180,16 +203,14 @@ export default function Home() {
           </>
         }
         ListFooterComponent={
-          <View style={styles.taskFooter}>
-            <Text style={styles.footerText}>
-              {totalTasksCompleted === totalTasksCreated
-                ? "Parabéns, você finalizou todas as tarefas!"
-                : "Você ainda tem tarefas pendentes"}
-            </Text>
-            <Text style={styles.footerText}>
-              {totalTasksCompleted === totalTasksCreated ? "🎉" : "👊"}
-            </Text>
-          </View>
+          finishTasks ? (
+            <View style={styles.taskFooter}>
+              <Text style={styles.footerText}>
+                {"Parabéns, você finalizou todas as tarefas!"}
+              </Text>
+              <Text style={styles.footerText}>{"🎉"}</Text>
+            </View>
+          ) : null
         }
         renderItem={({ item }) => (
           <Task
