@@ -29,6 +29,10 @@ export default function Home() {
   const [tasks, setTasks] = useState<TaskDTO[]>([]);
   const [newTask, setNewTask] = useState("");
   const [finishTasks, setFinishTasks] = useState(false);
+  // const [notification, setNotification] = useState<Notifications.Notification>();
+  const [lastNotificationTime, setLastNotificationTime] = useState<
+    number | null
+  >(null);
   const newTaskInputRef = useRef<TextInput>(null);
 
   useEffect(() => {
@@ -47,9 +51,13 @@ export default function Home() {
   }, [finishTasks]);
 
   const handleCallNotifications = async () => {
+    const currentTime = Date.now();
+    if (lastNotificationTime && currentTime - lastNotificationTime < 20000) {
+      return; // Não notificar se a última notificação foi enviada há menos de 20 segundos
+    }
     const trigger: Notifications.TimeIntervalTriggerInput = {
-      seconds: 10,
-      repeats: true,
+      seconds: 5,
+      // repeats: true,
       type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
     };
 
@@ -58,10 +66,16 @@ export default function Home() {
         title: "Tarefas finalizadas",
         body: "Parabéns, você finalizou todas as tarefas",
         sound: true,
-        priority: Notifications.AndroidNotificationPriority.HIGH,
+        // priority: Notifications.AndroidNotificationPriority.HIGH,
       },
       trigger: trigger,
     });
+
+    // Alert.alert("Parabéns, você finalizou todas as tarefas", "", [
+    //   { text: "OK" },
+    // ]);
+
+    setLastNotificationTime(currentTime);
   };
 
   // Adicionar tarefa
