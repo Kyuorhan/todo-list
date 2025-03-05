@@ -1,4 +1,3 @@
-// Path: packages/molecules/BaseContainer/index.tsx
 import {
   Platform,
   StatusBar,
@@ -12,7 +11,7 @@ import Constants from "expo-constants";
 const statusBarHeight =
   Platform.OS === "ios" ? Constants.statusBarHeight : StatusBar.currentHeight;
 
-export function BaseContainer({
+export function CustomStatusBar({
   children,
   style,
   barStyle,
@@ -29,6 +28,7 @@ export function BaseContainer({
     showHideTransition: `none`,
     barStyle: barStyle || `dark-content`,
     backgroundColor: `transparent`,
+    // backgroundColor: backgroundColor || `transparent`,
     translucent: translucent || true,
   };
   return (

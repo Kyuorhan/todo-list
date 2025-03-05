@@ -1,8 +1,6 @@
-import { Dimensions, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import { colors, fontFamily, fontSize } from "theme";
 import { scaleHeight } from "utils/scale";
-
-const { height } = Dimensions.get("window");
 
 const PADDING = scaleHeight(30);
 

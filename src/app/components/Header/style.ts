@@ -9,7 +9,7 @@ const HEIGHT_INPUT_BTN = scaleHeight(42);
 export const ICON_SIZE = scaleFont(20);
 // const HEIGHT_INPUT_BTN = height * 0.065;
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     height: height * 0.15,
     width: "100%",
@@ -59,3 +59,5 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+export default styles;

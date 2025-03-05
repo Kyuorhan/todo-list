@@ -1,6 +1,6 @@
-import { Image, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import Clipboard from "../../../assets/clipboard.svg";
-import { styles } from "./styles";
+import styles from "./styles";
 
 export function Empty() {
   return (

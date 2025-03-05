@@ -1,9 +1,8 @@
 import { TouchableOpacity, View, Text } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { styles } from "./styles";
+import styles from "./style";
 import { colors } from "theme";
-import { TaskDTO } from "../../../dtos/TaskDTO";
-
+import { TaskDTO } from "dtos/TaskDTO";
 type TasksProps = TaskDTO & {
   onTaskDone: (id: string) => void;
   onTaskDeleted: (id: string) => void;

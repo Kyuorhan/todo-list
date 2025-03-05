@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { colors, fontFamily, fontSize } from "theme";
 import { scaleHeight } from "utils/scale";
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     borderTopColor: colors.stroke,
@@ -45,3 +45,5 @@ export const styles = StyleSheet.create({
     color: colors.base.gray300,
   },
 });
+
+export default styles;

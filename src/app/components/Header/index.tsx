@@ -1,5 +1,5 @@
 import { View, TextInput, TouchableOpacity, Text } from "react-native";
-import { ICON_SIZE, styles } from "./styles";
+import styles, { ICON_SIZE } from "./style";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { colors } from "theme";
 import Logo from "../../../assets/logo.svg";

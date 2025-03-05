@@ -1,21 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  FlatList,
-  Text,
-  View,
-  Alert,
-  TextInput,
-  SafeAreaView,
-} from "react-native";
+import { FlatList, Text, View, Alert, TextInput } from "react-native";
 import * as Notifications from "expo-notifications";
-import styles from "./styles";
-import { TaskDTO } from "../../../dtos/TaskDTO";
-import { UUID } from "../../../utils/uuid";
-import { Header } from "../../components/Header";
-import { Task } from "../../components/Task";
-import { Empty } from "../../components/Empty";
-import { BaseContainer } from "app/components/BaseContainer";
+import { TaskDTO } from "dtos/TaskDTO";
+import { UUID } from "utils/uuid";
+import { CustomStatusBar } from "app/components/Custom/StatusBar";
+import { Header } from "app/components/Header";
+import { Task } from "app/components/Task";
+import { Empty } from "app/components/Empty";
 import { colors } from "theme";
+import styles from "./style";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -182,7 +175,10 @@ export default function Home() {
   ).length;
 
   return (
-    <BaseContainer backgroundColor={colors.primary} barStyle={"light-content"}>
+    <CustomStatusBar
+      backgroundColor={colors.primary}
+      barStyle={"light-content"}
+    >
       <Header
         inputRef={newTaskInputRef}
         task={newTask}
@@ -240,6 +236,6 @@ export default function Home() {
         removeClippedSubviews={true} // Melhora o desempenho em listas grandes
         ListEmptyComponent={<Empty />}
       />
-    </BaseContainer>
+    </CustomStatusBar>
   );
 }

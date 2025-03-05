@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { colors, fontFamily, fontSize } from "theme";
 import { scaleHeight } from "utils/scale";
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     width: "100%",
     height: scaleHeight(45),
@@ -40,3 +40,5 @@ export const styles = StyleSheet.create({
     padding: scaleHeight(15),
   },
 });
+
+export default styles;

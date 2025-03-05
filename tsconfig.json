@@ -5,9 +5,12 @@
     "noImplicitAny": true, // Gera erro quando o tipo "any" é implicitamente inferido.
     "allowUmdGlobalAccess": true, // Permite o acesso global a módulos UMD (Universal Module Definition) no TypeScript.
     "baseUrl": "./src/",
-    "jsx": "react-jsx"
-    // "paths": {
-    //   "@/*": ["./src/*"]
-    // }
-  }
+    "jsx": "react-jsx",
+    "forceConsistentCasingInFileNames": true, // Gera erro se houver inconsistências de maiúsculas e minúsculas nos nomes dos arquivos.
+    "paths": {
+      "@/*": ["./src/*"], // Mapeia a pasta src
+      "@assets/*": ["../assets/*"] // Mapeia a pasta assets
+    }
+  },
+  "include": ["src", "app.d.ts"] // Inclui o arquivo app.d.ts
 }
